@@ -11,3 +11,4 @@
 
 ## Architecture
 - Prerender `/` statically via `tanstackStart.prerender` (`autoStaticPathsDiscovery: false`) in `vite.config.ts` so the single-page landing site outputs static `index.html` at build time while keeping the TanStack Start project bootstrap.
+- GitHub Pages uploads only `dist/client`, with the build and router base path derived from Pages configuration; this supports both account and project sites without exposing server bundles.

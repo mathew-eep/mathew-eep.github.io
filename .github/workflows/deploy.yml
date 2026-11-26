@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      # This project has a Bun lockfile, not a pnpm lockfile.
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm run build
+        env:
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+      - name: Verify static site
+        run: |
+          test -s dist/client/index.html
+          touch dist/client/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist/client
+      - uses: actions/deploy-pages@v4
+        id: deployment
