@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Calendar, CheckCircle2, Clock, Globe, MessageSquare, ShieldCheck } from "lucide-react";
-import logoAsset from "@/assets/keystone-logo.png.asset.json";
+import { keystoneLogoUrl } from "@/assets/keystone-logo";
 
 const EMAIL = "keystone.lien@gmail.com";
 const EARLY_ACCESS_URL = "https://berkeley.qualtrics.com/jfe/form/SV_50E0tbiwgJkoVVA";
@@ -93,7 +93,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
         <a href="#top" className="flex items-center gap-2 focus:outline-none">
-          <img src={logoAsset.url} alt="Keystone" className="h-14 w-auto sm:h-16" />
+          <img src={keystoneLogoUrl} alt="Keystone" className="h-14 w-auto sm:h-16" />
         </a>
         <a
           href={SETUP_CALL_URL}
@@ -255,7 +255,7 @@ function Index() {
 
       <footer className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-8 text-sm text-muted-foreground">
         <div className="flex items-center gap-3">
-          <img src={logoAsset.url} alt="Keystone" className="h-9 w-auto" />
+          <img src={keystoneLogoUrl} alt="Keystone" className="h-9 w-auto" />
           <span>© {new Date().getFullYear()} Keystone · San Francisco, CA</span>
         </div>
         <a href={`mailto:${EMAIL}`} className="hover:text-foreground">{EMAIL}</a>
