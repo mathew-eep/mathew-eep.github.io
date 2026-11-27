@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Calendar, CheckCircle2, Clock, Globe, MessageSquare, ShieldCheck } from "lucide-react";
 import { keystoneLogoUrl } from "@/assets/keystone-logo";
 
-const EMAIL = "keystone.lien@gmail.com";
+const EMAIL = "info.keystone.hq@gmail.com";
 const EARLY_ACCESS_URL = "https://berkeley.qualtrics.com/jfe/form/SV_50E0tbiwgJkoVVA";
 const SETUP_CALL_URL = "https://calendar.app.google/zG5HB3Hdt8DvXJ817";
 
